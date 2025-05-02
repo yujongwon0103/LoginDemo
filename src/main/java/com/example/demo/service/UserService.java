@@ -15,7 +15,7 @@ public class UserService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Long save(SaveUserDTO dto) {
+    public Long saveUser(SaveUserDTO dto) {
         UserDAO user = UserDAO.builder()
                 .username(dto.getUsername())
                 .password(bCryptPasswordEncoder.encode(dto.getPassword()))

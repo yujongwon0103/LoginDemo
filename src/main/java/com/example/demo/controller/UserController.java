@@ -18,7 +18,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home() {
         return "home";
     }
@@ -34,9 +34,9 @@ public class UserController {
     }
 
 
-    @PostMapping("/user")
-    public String signup(SaveUserDTO dto) {
-        userService.save(dto);
+    @PostMapping("/saveUser")
+    public String saveUser(SaveUserDTO dto) {
+        userService.saveUser(dto);
         return "redirect:/login";
     }
 
