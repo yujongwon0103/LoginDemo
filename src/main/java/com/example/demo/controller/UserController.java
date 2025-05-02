@@ -14,9 +14,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @RequiredArgsConstructor
 @Controller
-public class UserApiController {
+public class UserController {
 
     private final UserService userService;
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signup() {
+        return "signup";
+    }
+
 
     @PostMapping("/user")
     public String signup(SaveUserDTO dto) {

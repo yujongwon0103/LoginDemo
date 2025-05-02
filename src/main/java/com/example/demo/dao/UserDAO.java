@@ -5,13 +5,18 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -29,6 +34,14 @@ public class UserDAO implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @CreatedDate // 엔티티가 생성될 때 생성 시간 저장
+    @Column(name = "created_dt")
+    private LocalDateTime createdDt;
+
+    @LastModifiedDate // 엔티티가 수정될 때 수정 시간 저장
+    @Column(name = "updated_dt")
+    private LocalDateTime updatedDt;
+    
     @Builder
     public UserDAO(String username, String password) {
         this.username = username;
