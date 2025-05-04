@@ -33,6 +33,9 @@ public class UserDAO implements UserDetails {
 
     @Column(name = "password")
     private String password;
+    
+    @Column(name = "nickname", unique = true)
+    private String nickname;
 
     @CreatedDate // 엔티티가 생성될 때 생성 시간 저장
     @Column(name = "created_dt")
@@ -43,9 +46,20 @@ public class UserDAO implements UserDetails {
     private LocalDateTime updatedDt;
     
     @Builder
-    public UserDAO(String email, String password) {
+    public UserDAO(String email, String password, String nickname) {
         this.email = email;
         this.password = password;
+        this.nickname = nickname;
+    }
+
+    /**
+     * 사용자 이름 변경하기
+     * @param nickname
+     * @return
+     */
+    public UserDAO update(String nickname) {
+        this.nickname = nickname;
+        return this;
     }
 
     /**

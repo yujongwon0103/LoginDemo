@@ -9,3 +9,15 @@
 <h1>Hello World</h1>
 <button type="button" class="btn btn-secondary" onclick="location.href='/logout'">로그아웃</button>
 </body>
+<script>
+    const token = searchParam('token')
+
+    if (token) {
+        localStorage.setItem("access_token", token)
+    }
+
+    function searchParam(key) {
+        return new URLSearchParams(location.search).get(key);
+    }
+</script>
+</html>
