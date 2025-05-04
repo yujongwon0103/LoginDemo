@@ -15,13 +15,13 @@ public class UserDetailService implements UserDetailsService {
 
     /**
      * 사용자 ID로 사용자 정보 불러오기
-     * @param username 사용자 ID
+     * @param email 사용자 ID
      * @return User 사용자 정보
      * @throws UsernameNotFoundException 사용자 ID 값이 없는 경우 예외처리
      */
     @Override
-    public UserDAO loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username)
-                .orElseThrow(()->new IllegalArgumentException(username));
+    public UserDAO loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .orElseThrow(()->new IllegalArgumentException(email));
     }
 }

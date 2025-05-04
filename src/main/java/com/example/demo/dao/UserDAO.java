@@ -28,8 +28,8 @@ public class UserDAO implements UserDetails {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
-    private String username;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
     @Column(name = "password")
     private String password;
@@ -43,8 +43,8 @@ public class UserDAO implements UserDetails {
     private LocalDateTime updatedDt;
     
     @Builder
-    public UserDAO(String username, String password) {
-        this.username = username;
+    public UserDAO(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -59,11 +59,11 @@ public class UserDAO implements UserDetails {
 
     /**
      * 사용자 아이디 반환 (고유값)
-     * @return username
+     * @return email
      */
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     /**

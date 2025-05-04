@@ -9,8 +9,8 @@ class SaveUserDTOTest {
     @Test
     void getUsername() {
         SaveUserDTO dto = new SaveUserDTO();
-        dto.setUsername("YJW");
-        assertEquals("YJW", dto.getUsername());
+        dto.setEmail("YJW");
+        assertEquals("YJW", dto.getEmail());
     }
 
     @Test
@@ -23,8 +23,8 @@ class SaveUserDTOTest {
     @Test
     void setUsername() {
         SaveUserDTO dto = new SaveUserDTO();
-        dto.setUsername("YJW");
-        assertEquals("YJW", dto.getUsername());
+        dto.setEmail("YJW");
+        assertEquals("YJW", dto.getEmail());
     }
 
     @Test

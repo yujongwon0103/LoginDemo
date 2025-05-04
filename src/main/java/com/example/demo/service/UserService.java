@@ -17,9 +17,14 @@ public class UserService {
 
     public Long saveUser(SaveUserDTO dto) {
         UserDAO user = UserDAO.builder()
-                .username(dto.getUsername())
+                .email(dto.getEmail())
                 .password(bCryptPasswordEncoder.encode(dto.getPassword()))
                 .build();
         return userRepository.save(user).getId();
+    }
+
+    public UserDAO findById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Unexpected User"));
     }
 }
